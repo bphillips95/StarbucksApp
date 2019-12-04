@@ -8,22 +8,23 @@ class StarbucksApp
     end
 
     def run 
-        #  welcome
-        #  log_in
-        #  select_starbucks
-        #  select_item
-        view_cart
+        welcome
+        log_in
+        # select_starbucks
+        # select_item
+        #  view_cart
     end 
 
     def welcome
+        #Enter animation
         puts "Welcome to Starbucks!"
     end 
 
     def log_in
-        choice = self.prompt.select("Would you like to log in or sign up?") do |menu|
+        choice = self.prompt.select("Would you like to do") do |menu|
             menu.choice "Log in", -> {User.handle_existing_user}
             menu.choice "Sign up", -> {User.handle_new_user}
-            user_man = User.all.last 
+            #user_man = User.all.last <---why do we need thi?
         end 
     end 
 

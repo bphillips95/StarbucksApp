@@ -5,31 +5,41 @@ class User < ActiveRecord::Base
     def self.tty_prompt
         TTY::Prompt.new 
     end 
+        
 
     def self.handle_existing_user 
         system "clear"
-        puts "Enter username"
-        uname = gets.chomp.downcase 
-      
-        user = User.find_by(username: uname)
-        if user
-        puts "Welcome #{uname}!"
-       else
-        
-        puts 'Who are you' 
-        sleep(0.5) 
-        puts "You will be redirected to sign up"
-        sleep(1)
-        
-         User.handle_new_user
-        # should take you back to sign up 
-       end 
+        username = self.tty_prompt.ask('What is your username?') do |a|
+            a.required true
+        end
+        username = username.downcase
+        if User.all.map(&:username).exclude?(username)
+            puts 'This username does not exist'
+            sleep 5 / 2
+            system "clear"
+            puts 'Please create a new account'
+            sleep 2
+            self.handle_new_user 
+        else
+            username
+        end
     end
+
     def self.handle_new_user 
         # able to create empty username and password 
         system "clear" 
-        username = self.tty_prompt.ask("Create a username")    
-        password = self.tty_prompt.mask("Create a password") 
+        username = self.tty_prompt.ask("Create a username") 
+        username = username.downcase
+        if User.all.map(&:username).include?(username)
+            puts 'This username already exist'
+            sleep 5 / 2
+            system "clear"
+            puts 'Please enter a new username'
+            sleep 1
+            self.handle_new_user 
+        else
+            password = self.tty_prompt.mask("Create a password") 
+        end   
         User.create(username: username, password: password)
     end 
 
