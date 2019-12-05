@@ -31,6 +31,7 @@ class StarbucksApp
     def main_menu 
         # view user profile 
         # go to select_starbucks 
+        system 'clear'
         choice = self.prompt.select("What would you like to do") do |menu|
             menu.choice "View user profile", -> {User.user_profile}
             menu.choice "Delete your account", -> {User.delete_profile}
@@ -41,6 +42,7 @@ class StarbucksApp
     end 
     
     def select_item
+        system 'clear'
         drinks = %w(coffee☕️ tea🍵 latte☕️ water💧 cappucino☕️)
         selected_drinks = prompt.multi_select("Select drinks?", drinks)
         @@cart << selected_drinks
@@ -48,6 +50,7 @@ class StarbucksApp
     end
 
     def view_cart 
+        system 'clear'
         puts "You selected #{@@cart.join(", ")}"
         choice = self.prompt.select("Would you like to?") do |menu|   
             menu.choice "Add to cart", -> {select_item}
@@ -58,6 +61,7 @@ class StarbucksApp
     end
 
     def remove_items
+        system 'clear'
         @@cart = @@cart.flatten
         cart_arr = @@cart 
         if cart_arr.count == 0 
@@ -77,6 +81,7 @@ class StarbucksApp
     end 
 
     def confirm_checkout
+        system 'clear'
         choice = self.prompt.select("Are you done") do |menu|
             menu.choice "Yes", -> {checkout}
             menu.choice "No", -> {view_cart}
@@ -84,14 +89,16 @@ class StarbucksApp
     end  
 
     def checkout 
+        system 'clear'
         puts "Your order has been confirmed of #{@@cart.join(", ")}.
             It will be ready for pickup in #{rand(20...40)} minutes" 
     end
     def cancel_order
+        system 'clear'
         @@cart.clear
         puts "Your cart has been emptied"
         sleep(2)
-        view_cart
+        main_menu
         sleep(2)
     end 
 end 
