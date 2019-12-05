@@ -25,12 +25,10 @@ class User < ActiveRecord::Base
     def self.find_idby_username(uname)
         User.all.find do |user|
             if user.username == uname 
-                user
+                user 
             end
         end
     end
-
-
 
     def self.handle_existing_user 
         system "clear"
@@ -78,7 +76,7 @@ class User < ActiveRecord::Base
         else
             password = self.tty_prompt.mask("Create a password", required: true) 
         end   
-        @new_user = User.create(username: username, password: password)
+        @userid = User.create(username: username, password: password) 
     end 
     
     def self.order_new_bk
@@ -86,4 +84,33 @@ class User < ActiveRecord::Base
         Order.create(user_id: @userid.id , starbucks_id: 1)
     end
 
-end
+    def self.user_profile  
+        system 'clear'
+        puts "Your username: #{@userid.username}"
+        puts "Your password: #{@userid.password}"
+        sleep 2
+    end 
+    
+    def self.delete_profile
+        system 'clear'
+        @userid.delete
+        puts "Your account has been terminated"
+        puts   "NO CAFFEINE"
+        abort
+    end 
+
+    def self.select_starbucks 
+        system 'clear'
+        User.find_idby_username(@userid)
+        star_choice = Starbucks.starbucks_name
+        choices = self.tty_prompt.select("Which location would you like to order from?", star_choice) 
+        if choices
+            d = Starbucks.find_starby_user(choices)
+            Order.create(user_id: @userid.id, starbucks_id: d.id)
+        end
+    end
+
+
+
+end 
+
