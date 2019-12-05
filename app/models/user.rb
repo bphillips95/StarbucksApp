@@ -5,32 +5,85 @@ class User < ActiveRecord::Base
     def self.tty_prompt
         TTY::Prompt.new 
     end 
+   
+    def self.log_in
+        choice = self.tty_prompt.select("Would you like to do") do |menu|
+            menu.choice "Log in", -> {User.handle_existing_user}
+            menu.choice "Sign up", -> {User.handle_new_user}
+        end 
+    end 
+
+    def self.find_byp_username(uname)
+        User.all.find do |user|
+            if user.username == uname 
+                @a = "#{user.password}"
+            end
+        end
+        @a
+    end 
+
+    def self.find_idby_username(uname)
+        User.all.find do |user|
+            if user.username == uname 
+                user
+            end
+        end
+    end
+
+
 
     def self.handle_existing_user 
         system "clear"
-        puts "Enter username"
-        uname = gets.chomp.downcase 
-      
-        user = User.find_by(username: uname)
-        if user
-        puts "Welcome #{uname}!"
-       else
-        
-        puts 'Who are you' 
-        sleep(0.5) 
-        puts "You will be redirected to sign up"
-        sleep(1)
-        
-         User.handle_new_user
-        # should take you back to sign up 
-       end 
+        username = self.tty_prompt.ask('Enter your username: ', required: true)
+        if User.all.map(&:username).exclude?(username)
+            puts 'This username does not exist'
+            sleep 5 / 2
+            system "clear"
+            puts 'Please create a new account'
+            sleep 2
+            self.log_in
+        else
+            p = self.tty_prompt.mask('Enter your password:', required: true)
+            if  self.find_byp_username(username) == p
+                puts "You're all set!"
+                sleep (1)
+            end 
+            if  self.find_byp_username(username) != p
+                puts "Your username & password does not match..."
+                sleep (0.04)
+                puts "Please try again"
+                sleep (1.2)
+                system "clear"
+                self.log_in
+            end
+        end
+        @userid = self.find_idby_username(username)
+        #Order.create(user_id: self.id) 
+        # self.create_order(username)
+        # Order.create(user_id: self.id)
     end
+
     def self.handle_new_user 
         # able to create empty username and password 
         system "clear" 
-        username = self.tty_prompt.ask("Create a username")    
-        password = self.tty_prompt.mask("Create a password") 
-        User.create(username: username, password: password)
+        username = self.tty_prompt.ask("Create a username", required: true) 
+        # username = username.downcase
+        if User.all.map(&:username).include?(username)
+            puts 'This username already exist'
+            sleep 5 / 2
+            system "clear"
+            sleep 1
+            # self.handle_new_user 
+            self.log_in
+        else
+            password = self.tty_prompt.mask("Create a password", required: true) 
+        end   
+        @new_user = User.create(username: username, password: password)
     end 
+    
+    def self.order_new_bk
+        # Order.create(user_id: @new_user.id , starbucks_id: 1)
+        Order.create(user_id: @userid.id , starbucks_id: 1)
+    end
 
 end

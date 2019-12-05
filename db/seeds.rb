@@ -6,10 +6,3 @@ jill = User.create(username: 'jill789', password: 'jilliscool')
 bklyn_location = Starbucks.create(name: "Brooklyn Starbucks")
 mhtn_location = Starbucks.create(name: "Manhattan Starbucks")
 
-# orders 
-order = Order.create('')
-
-
-
-# items  
-

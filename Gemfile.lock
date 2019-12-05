@@ -58,8 +58,17 @@ GEM
       activerecord (>= 3.2)
       sinatra (>= 1.0)
     sqlite3 (1.4.1)
+    strings (0.1.8)
+      strings-ansi (~> 0.1)
+      unicode-display_width (~> 1.5)
+      unicode_utils (~> 1.4)
+    strings-ansi (0.2.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    tty-box (0.5.0)
+      pastel (~> 0.7.2)
+      strings (~> 0.1.6)
+      tty-cursor (~> 0.7)
     tty-color (0.5.0)
     tty-cursor (0.7.0)
     tty-prompt (0.20.0)
@@ -76,6 +85,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
+    unicode-display_width (1.6.0)
+    unicode_utils (1.4.0)
     wisper (2.0.1)
 
 PLATFORMS
@@ -90,6 +101,7 @@ DEPENDENCIES
   rest-client (~> 2.1)
   sinatra-activerecord
   sqlite3
+  tty-box
   tty-prompt
 
 BUNDLED WITH
