@@ -15,7 +15,7 @@ class StarbucksApp
     #step 1 
     def welcome
         #Enter animation
-        puts "Welcome to Starbucks!😜 ☕️ 😜 ☕️ 😎 ☕️"
+        puts "Welcome to ABC coffee!😜 ☕️ 😜 ☕️ 😎 ☕️"
         sleep(1)
         log_in 
     end 
@@ -170,6 +170,7 @@ end
         cart_arr = @@cart 
         if cart_arr.count == 0 
             puts "Your cart is empty, please add items"
+            sleep 1
             view_cart
         end
         if cart_arr.count > 0 
@@ -196,8 +197,14 @@ end
 #-------------------------------- C H E C K O U T ------------------->
     def checkout 
         system 'clear'
-        puts "Your order has been confirmed of #{@@cart.join(", ")}. It will be ready for pickup in #{rand(20...40)} minutes" 
-    end
+        if @@cart.count == 0 
+            puts "Your cart is empty, please select an item"
+            sleep 1
+            main_menu 
+        else
+            puts "Your order has been confirmed of #{@@cart.join(", ")}. It will be ready for pickup in #{rand(20...40)} minutes" 
+        end
+    end 
 
 #-------------------------------- C A N C E L   O R D E R ------------------->
     def cancel_order
