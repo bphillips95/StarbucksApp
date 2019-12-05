@@ -35,6 +35,8 @@ class StarbucksApp
             menu.choice "View user profile", -> {User.user_profile}
             menu.choice "Delete your account", -> {User.delete_profile}
             menu.choice "Ready for caffeine?", -> {}
+            menu.choice "Break your computer????", -> {}
+            menu.choice "exit", -> {abort}
         end 
     end 
     
@@ -51,7 +53,6 @@ class StarbucksApp
             menu.choice "Add to cart", -> {select_item}
             menu.choice "Remove item from cart", -> {remove_items}
             menu.choice "Proceed to checkout", -> {confirm_checkout}
-            menu.choice "Break your computer????"
             menu.choice "Cancel Order", -> {cancel_order}
         end 
     end
@@ -88,8 +89,9 @@ class StarbucksApp
     end
     def cancel_order
         @@cart.clear
+        puts "Your cart has been emptied"
         sleep(2)
-        puts "Goodbye"
+        view_cart
         sleep(2)
     end 
 end 

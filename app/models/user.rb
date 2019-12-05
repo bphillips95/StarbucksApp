@@ -35,18 +35,16 @@ class User < ActiveRecord::Base
         username = self.tty_prompt.ask('Enter your username: ', required: true)
         if User.all.map(&:username).exclude?(username)
             puts 'This username does not exist'
-            sleep 5 / 2
+            sleep 3 / 2
             system "clear"
-            puts 'Please create a new account'
-            sleep 2
             self.log_in
-        else
+        else 
             p = self.tty_prompt.mask('Enter your password:', required: true)
             if  self.find_byp_username(username) == p
                 puts "You're all set!"
                 sleep (1)
-            end 
-            if  self.find_byp_username(username) != p
+            
+            elsif  self.find_byp_username(username) != p
                 puts "Your username & password does not match..."
                 sleep (0.04)
                 puts "Please try again"
