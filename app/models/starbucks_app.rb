@@ -57,7 +57,8 @@ class StarbucksApp
     end
 
     def remove_items
-
+        @@cart = @@cart.flatten
+        cart_arr = @@cart 
         if cart_arr.count == 0 
             puts "Your cart is empty, please add items"
             view_cart
@@ -68,7 +69,7 @@ class StarbucksApp
             selected_items.each do |del| 
                 cart_arr.delete_at(cart_arr.index(del))
             end 
-            @@cart = cart_arr
+            # @@cart = cart_arr
             sleep(0.6)
             view_cart
         end
