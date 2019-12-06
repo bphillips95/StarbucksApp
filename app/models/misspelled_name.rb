@@ -19,5 +19,4 @@
 #     wrong_name_array.join.capitalize
 #     wrong_name = wrong_name_array.join.capitalize
 #     puts "Nice to meet you, #{wrong_name}"
-#     end
-#     name_misspeller
+# end
