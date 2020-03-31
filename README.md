@@ -19,6 +19,6 @@ This web app makes use of the following:
 - Clone this repo to your local machine `git clone <this-repo-url>`
 - cd into the directory holding this repository. 
 - run `bundle install` to install required dependencies
-- run `rails db:migrate` to create tables into the database.
-- run `rails db:seed` to create seed data.
+- run `rake db:migrate` to create tables into the database.
+- run `rake db:seed` to create seed data.
 - run `ruby bin/run.rb` to run the app.
