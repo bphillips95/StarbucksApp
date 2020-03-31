@@ -10,20 +10,11 @@ class StarbucksApp
 
     def run 
         welcome
-<<<<<<< HEAD
-=======
-        log_in
-        select_starbucks
-        select_item
-        # DO NOT RUN confirm_checkout
-        # DO NOT RUN # view_cart
->>>>>>> master
     end 
 
     #step 1 
     def welcome
         #Enter animation
-<<<<<<< HEAD
         3.times do 
             play_music
         end
@@ -34,24 +25,13 @@ class StarbucksApp
         system('say "Caution: To order from this application, you have to drink your coffee with Baruch and Annie."')
         sleep(1)
         log_in 
-=======
-        puts "Welcome to Starbucks!😜 ☕️ 😜 ☕️ 😎 ☕️"
-        sleep(1)
->>>>>>> master
     end 
 
     #step 2
     def log_in
-<<<<<<< HEAD
         choice = @prompt.select("What would you like to do") do |menu|
             menu.choice "Log in", -> {handle_existing_user}
             menu.choice "Sign up", -> {handle_new_user}
-=======
-        choice = self.prompt.select("Would you like to do") do |menu|
-            menu.choice "Log in", -> {User.handle_existing_user}
-            menu.choice "Sign up", -> {User.handle_new_user}
-            #user_man = User.all.last <---why do we need thi?
->>>>>>> master
         end 
     end 
 
@@ -121,7 +101,6 @@ end
         # view user profile 
         # go to select_starbucks 
         system 'clear'
-<<<<<<< HEAD
         CoffeeMan.stay_logo
         puts "WOOHOO! Looking forward to hanging out! 😆".colorize(:magenta)
         choice = @prompt.select("What would you like to do") do |menu|
@@ -135,11 +114,6 @@ end
             menu.choice "Break Computer?!?!", -> {break_comp}
             #Exits App
             menu.choice "Exit", -> {exit_star}
-=======
-        choice = self.prompt.select("Please select a local Starbucks location ☕️☕️☕️") do |menu|
-            menu.choice "Starbucks of Brooklyn", -> {Order.create(user_id: User.all.last.id, starbucks_id: Starbucks.all.first.id)}
-            menu.choice "Starbucks of Manhattan", -> {Order.create(user_id: User.all.last.id, starbucks_id: Starbucks.all.second.id)}
->>>>>>> master
         end 
     end 
 
@@ -207,11 +181,8 @@ end
 #step 4
     #add items to cart and readd items to cart 
     def select_item
-<<<<<<< HEAD
         system 'clear'
         CoffeeMan.stay_logo
-=======
->>>>>>> master
         drinks = %w(coffee☕️ tea🍵 latte☕️ water💧 cappucino☕️)
         selected_drinks = prompt.multi_select("Select drinks?", drinks)
         @@cart << selected_drinks
@@ -224,24 +195,16 @@ end
         CoffeeMan.stay_logo
         puts "You selected #{@@cart.join(", ")}"
         choice = self.prompt.select("Would you like to?") do |menu|   
-<<<<<<< HEAD
             menu.choice "Add to cart", -> {select_item}
             menu.choice "Remove item from cart", -> {remove_items}
             menu.choice "Proceed to checkout", -> {confirm_checkout}
             menu.choice "Cancel Order", -> {cancel_order}
-=======
-            menu.choice "Add to cart", -> {self.select_item}
-            menu.choice "Remove item from cart", -> {self.remove_items}
-            menu.choice "Proceed to checkout", -> {confirm_checkout}
-            menu.choice "Break your computer????"
->>>>>>> master
         end 
     end
 
 #################### V I E W    C A R T    O P T I O NS #####################################
 #-------------------------------- R E M O V E    I T E M S ------------------->
     def remove_items
-<<<<<<< HEAD
         system 'clear'
         CoffeeMan.stay_logo
         @@cart = @@cart.flatten
@@ -267,24 +230,10 @@ end
     def confirm_checkout
         system 'clear'
         CoffeeMan.stay_logo
-=======
-        cart_arr = @@cart.flatten
-        splitted_cart = cart_arr.split(" ")
-        selected_items = prompt.multi_select("Which item would you like to remove?", splitted_cart)
-        selected_items.each do |del| 
-            cart_arr.delete_at(cart_arr.index(del))
-        end 
-        @@cart = cart_arr
-        sleep(0.6)
-        view_cart
-    end
-    def confirm_checkout
->>>>>>> master
         choice = self.prompt.select("Are you done") do |menu|
             menu.choice "Yes", -> {checkout}
             menu.choice "No", -> {view_cart}
         end
-<<<<<<< HEAD
     end 
 
 #-------------------------------- C H E C K O U T ------------------->
@@ -390,20 +339,3 @@ end
     end
 end
 #-----------------------E N D-------------------------------------------->
-=======
-    end  
-
-    def checkout 
-        puts "Your order has been confirmed of #{@@cart.join(", ")}.
-        It will be ready for pickup in #{rand(30...80)} minutes" 
-    end
-
-end 
-
-
-# if User.all.map(&:username).include?(username)
-#     set same variable to last user in sign up  method and name instance in login method
-#  User profile option in menu which allows you to view name username password (change password) and delete account option
-
-# lowercase login automatiocally reverts to uppercase
->>>>>>> master
