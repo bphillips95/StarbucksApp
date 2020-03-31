@@ -3,6 +3,12 @@
 <div align="center">
   A <code>Ruby</code> CLI application for ordering beverages
 </div>
+<div align="center">
+  <sub>Built with ✨ by
+  <a href="https://github.com/bigfishh">Annie Zheng</a> and
+  <a href="https://github.com/bphillips95"> Baruch Phillips</a>
+  </sub>
+</div>
 
 <br />
 
