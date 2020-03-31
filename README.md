@@ -1,7 +1,7 @@
 <h1 align="center">Starbucks w/ A & B ☕️ </h1>
 
 <div align="center">
-  A <code>Ruby</code> CLI application for ordering beverages
+  A <code>Ruby</code> CLI application for ordering beverages with the intentions of networking with Annie and Baruch
 </div>
 <div align="center">
   <sub>Built with ✨ by
@@ -13,11 +13,20 @@
 <br />
 
 ## Features 
+- animated welcome display along with background "elevator" music
+- sign in/sign up option with authenticated password
+- includes fun navigatable menus and choice options such as
+  - break your computer
+  - get caffinated
+  - starbucks locations (pre-seeded data)
+  - beverage options
+- full CRUD capabilities for users such as updating username/password, deleting account.
 
 ## Tech Stack
 This web app makes use of the following:
 - Ruby [2.6.1]
 - SQLite3 [~> 1.4] - Database
+- Sinatra-activerecord - Gem that extends Sinatra with ActiveRecord helper methods and Rake tasks
 - TTY::Prompt - Gem that provides independent prompt component
 - Colorize - Gem for colorizing text using ANSI escape sequences
 
