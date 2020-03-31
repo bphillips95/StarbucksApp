@@ -12,6 +12,7 @@
 <p align="center">
   <img style="margin-left:10%" width="90%" height="60%" src="sbimage.gif">
 </p>
+It was developed as a Flatiron School’s Mod1 project to demonstrate the knowledge of Active Record Associations, as well as CRUD methods, and database management.
 
 ## Features 
 - Animated welcome display along with background "elevator" music and audio
