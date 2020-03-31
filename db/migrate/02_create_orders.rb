@@ -6,4 +6,5 @@ class CreateOrders < ActiveRecord::Migration[4.2]
             # t.string :item_
         end
     end
-end
+
+    

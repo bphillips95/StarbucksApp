@@ -1,15 +1,24 @@
-# User data 
-kevin = User.create(username: "kevinrocks123", password: 'password')
-jill = User.create(username: 'jill789', password: 'jilliscool')
-
+Starbucks.destroy_all
 # Starbucks data 
-bklyn_location = Starbucks.create(name: "Brooklyn Starbucks")
-mhtn_location = Starbucks.create(name: "Manhattan Starbucks")
-
-# orders 
-order = Order.create('')
-
-
-
-# items  
+mhtn_location = Starbucks.create(name: "Manhattan ABC coffee")
+boston_location = Starbucks.create(name: "Boston ABC coffee")
+bklyn_location = Starbucks.create(name: "Brooklyn ABC coffee")
+la_location = Starbucks.create(name: "LA ABC coffee")
+london_location = Starbucks.create(name: "London ABC coffee")
+texas_location = Starbucks.create(name: "Texas ABC coffee")
+chicago_location = Starbucks.create(name: "Chicago ABC coffee")
+rio_location = Starbucks.create(name: "Rio de Janeiro ABC coffee")
+tokyo_location = Starbucks.create(name: "Tokyo ABC coffee")
+prague_location = Starbucks.create(name: "Prague Starbucks")
+china_location = Starbucks.create(name: "China Starbucks")
+vienna_location = Starbucks.create(name: "Vienna Starbucks")
+india_location = Starbucks.create(name: "India Starbucks")
+seoul_location = Starbucks.create(name: "Seoul Starbucks")
+phuket_location = Starbucks.create(name: "Phuket Starbucks")
+bali_location = Starbucks.create(name: "Bali Starbucks")
+hong_kong_location = Starbucks.create(name: "Hong Kong Starbucks")
+madrid_location = Starbucks.create(name: "Madrid Starbucks")
+venice_location = Starbucks.create(name: "Venice Starbucks")
+paris_location = Starbucks.create(name: "Paris Starbucks")
+copenhagen_location = Starbucks.create(name: "Copenhagen Starbucks")
 
