@@ -1,4 +1,4 @@
-## Process
+## Project Title: Starbucks with Baruch & Annie
 
 ### Setup
 1. Create Gemfile + run `bundle`
