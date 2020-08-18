@@ -21,8 +21,8 @@ class StarbucksApp
         CoffeeMan.go
         puts "WELCOME TO STARBUCKS W/ ANNIE & BARUCH! 😜 ☕️ 😜 ☕️ 😎 ☕️".colorize(:blue)
         system('say "Welcome to Starbucks with Annie and Baruch!"')
-        puts "Caution: To order from this application, you have to drink coffee w/ Baruch and Annie.".colorize(:red)
-        system('say "Caution: To order from this application, you have to drink your coffee with Baruch and Annie."')
+        puts "Caution: To order from this application, you have to hangout with Baruch and Annie.".colorize(:red)
+        system('say "Caution: To order from this application, you have to hangout with Baruch and Annie."')
         sleep(1)
         log_in 
     end 
